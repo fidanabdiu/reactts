@@ -1,22 +1,22 @@
 import { render, screen } from "@testing-library/react";
 import * as reactRedux from "react-redux";
-import { Provider } from "react-redux";
-import store from "../redux/store";
-import { State } from "../models/State";
-import { User } from "../models/User";
 import { Post } from "../models/Post";
 import Posts from "./Posts";
 
-describe("POSTS", function () {
-    test("RENDERS 'POSTS'", function () {
+describe("POSTS", function () : void {
+    test("RENDERS 'TEST1' TWICE", function (): void {
         //ARRANGE
         const useSelectorMock = jest.spyOn(reactRedux, "useSelector");
-        useSelectorMock.mockReturnValue(new State(false, new User("", ""), new Post("", "", ""), [], false, "", true, "INITIAL STATE"));
-        render(<Provider store={store}><Posts /></Provider>);
+        const useDispatchMock = jest.spyOn(reactRedux, "useDispatch");
+        let postCollection: Post[] = [];
+        postCollection.push(new Post("1", "TEST1", "TEST1"));
+        useSelectorMock.mockReturnValue(postCollection);
+        useDispatchMock.mockReturnValue(jest.fn());
+        render(<Posts />);
         //ACT
-        //...NOTHING...
+        //...NOTHING
         //ASSERT
-        const posts = screen.getByText("POSTS");
-        expect(posts).toBeInTheDocument();
+        const test1 = screen.getAllByText("TEST1");
+        expect(test1).toHaveLength(2);
     });
 });

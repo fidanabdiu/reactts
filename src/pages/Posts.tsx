@@ -6,7 +6,6 @@ import { Row, Col } from "react-bootstrap";
 const Posts: React.FC = function (): JSX.Element {
     return (
         <div>
-            <div>POSTS</div>
             <Row>
                 <Col xs={4}>
                     <PostForm />

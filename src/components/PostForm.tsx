@@ -21,11 +21,11 @@ const PostForm: React.FC = function (): JSX.Element {
     };
     const saveHandler = function () {
         if (post.title.trim().length === 0) {
-            dispatch({ type: Actions.ERROR, payload: "TITLE IS REQUIRED." });
+            dispatch({ type: Actions.ERROR, payload: "TITLE IS REQUIRED" });
             return;
         }
         if (post.body.trim().length === 0) {
-            dispatch({ type: Actions.ERROR, payload: "BODY IS REQUIRED." });
+            dispatch({ type: Actions.ERROR, payload: "BODY IS REQUIRED" });
             return;
         }
         let url = "https://reactjs-e78ff-default-rtdb.firebaseio.com/posts";
@@ -48,7 +48,7 @@ const PostForm: React.FC = function (): JSX.Element {
                 });
             }
             else {
-                dispatch({ type: Actions.ERROR, payload: "ERROR WHILE COMMUNICATING WITH THE API." });
+                dispatch({ type: Actions.ERROR, payload: "ERROR WHILE COMMUNICATING WITH THE API" });
             }
         });
     };

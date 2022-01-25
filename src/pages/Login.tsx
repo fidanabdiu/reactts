@@ -12,11 +12,11 @@ const Login: React.FC = function (): JSX.Element {
     const dispatch = useDispatch();
     const loginHandler = function () {
         if (user.username.trim().length === 0) {
-            dispatch({ type: Actions.ERROR, payload: "USERNAME IS REQUIRED." });
+            dispatch({ type: Actions.ERROR, payload: "USERNAME IS REQUIRED" });
             return;
         }
         if (user.password.trim().length === 0) {
-            dispatch({ type: Actions.ERROR, payload: "PASSWORD IS REQUIRED." });
+            dispatch({ type: Actions.ERROR, payload: "PASSWORD IS REQUIRED" });
             return;
         }
         fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAchUdIo0WO3Ufo7HAswZ8Z-MKEf6DYpzg", {
@@ -32,10 +32,10 @@ const Login: React.FC = function (): JSX.Element {
                 });
             }
             else if (response.status === 400) {
-                dispatch({ type: Actions.ERROR, payload: "INVALID CREDENTIALS." });
+                dispatch({ type: Actions.ERROR, payload: "INVALID CREDENTIALS" });
             }
             else {
-                dispatch({ type: Actions.ERROR, payload: "ERROR WHILE COMMUNICATING WITH THE API." });
+                dispatch({ type: Actions.ERROR, payload: "ERROR WHILE COMMUNICATING WITH THE API" });
             }
         });
     };

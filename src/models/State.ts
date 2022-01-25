@@ -10,7 +10,14 @@ export class State {
     errorAlertText: string;
     infoAlertVisible: boolean;
     infoAlertText: string;
-    constructor(logged: boolean, user: User, post: Post, postCollection: Post[], errorAlertVisible: boolean, errorAlertText: string, infoAlertVisible: boolean, infoAlertText: string) {
+    constructor(logged: boolean,
+        user: User,
+        post: Post,
+        postCollection: Post[],
+        errorAlertVisible: boolean,
+        errorAlertText: string,
+        infoAlertVisible: boolean,
+        infoAlertText: string) {
         this.logged = logged;
         this.user = user;
         this.post = post;

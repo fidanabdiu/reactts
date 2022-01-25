@@ -18,19 +18,15 @@ const PostList: React.FC = function (): JSX.Element {
         fetch("https://reactjs-e78ff-default-rtdb.firebaseio.com/posts.json").then(function (response) {
             if (response.status === 200) {
                 response.json().then(function (data) {
-                    let newPostCollection = [];
+                    let newPostCollection: Post[] = [];
                     for (const key in data) {
-                        newPostCollection.push({
-                            id: key,
-                            title: data[key].title,
-                            body: data[key].body
-                        });
+                        newPostCollection.push(new Post(key, data[key].title, data[key].body));
                     }
                     dispatch({ type: Actions.POSTS_FETCHED, payload: newPostCollection });
                 });
             }
             else {
-                dispatch({ type: Actions.ERROR, payload: "ERROR WHILE COMMUNICATING WITH THE API." });
+                dispatch({ type: Actions.ERROR, payload: "ERROR WHILE COMMUNICATING WITH THE API" });
             }
         });
     };
@@ -54,7 +50,7 @@ const PostList: React.FC = function (): JSX.Element {
                 });
             }
             else {
-                dispatch({ type: Actions.ERROR, payload: "ERROR WHILE COMMUNICATING WITH THE API." });
+                dispatch({ type: Actions.ERROR, payload: "ERROR WHILE COMMUNICATING WITH THE API" });
             }
         });
     };

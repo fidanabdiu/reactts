@@ -6,8 +6,7 @@ import { Action } from "../models/Action";
 import { Actions } from "../models/Enums";
 import { LOCALSTORAGE_KEY } from "../models/Constants";
 
-const INITIAL_STATE = new State(false, new User("", ""), new Post("", "", ""), [], false, "", true, "INITIAL STATE");
-const reducer = function (state: State = INITIAL_STATE, action: Action): State {
+const reducer = function (state: State = getState(), action: Action): State {
     if (action.type === Actions.ERROR) {
         return new State(state.logged,
             new User(state.user.username, state.user.password),
@@ -171,7 +170,8 @@ store.subscribe(stateChangedHandler);
 function getState(): State {
     let stateJson = localStorage.getItem(LOCALSTORAGE_KEY);
     if (stateJson === null) {
-        stateJson = JSON.stringify(INITIAL_STATE);
+        const initialState = new State(false, new User("", ""), new Post("", "", ""), [], false, "", true, "INITIAL STATE");
+        stateJson = JSON.stringify(initialState);
         localStorage.setItem(LOCALSTORAGE_KEY, stateJson);
     }
     let state = JSON.parse(stateJson);

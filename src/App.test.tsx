@@ -8,8 +8,8 @@ import { User } from "./models/User";
 import { Post } from "./models/Post";
 import App from "./App";
 
-describe("APP", function () {
-  test("RENDERS 'INITIAL STATE' IN INITIAL STATE", function () {
+describe("APP", function (): void {
+  test("RENDERS 'INITIAL STATE' IN INITIAL STATE", function (): void {
     //ARRANGE
     const useSelectorMock = jest.spyOn(reactRedux, "useSelector");
     useSelectorMock.mockReturnValue(new State(false, new User("", ""), new Post("", "", ""), [], false, "", true, "INITIAL STATE"));
